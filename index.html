@@ -1,12 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexander's Weather APP</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Alexander's Weather App</title>
 </head>
+
 <body>
-    
+    <div class="navContainer">
+        <div class="header">
+            <div class="headerName">Alexander's Weather Forecast</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- current info for city entered -->
+        <div class="current-info">
+            <div class="date-container">
+                <div class="time" id="time">
+                </div>
+                <div class="currentCity" id="currentCity">
+                    <div class="date" id="date">
+                    </div>
+                </div>
+                <div class="others" id="current-weather-items">
+                    <div class="weather-item">
+                        <div id="current-temp">TEMP</div>
+                        <div>55&#176; F</div>
+                    </div>
+                    <div class="weather-item">
+                        <div id="current-humidity">HUMIDITY</div>
+                        <div>15%</div>
+                    </div>
+                    <div class="weather-item">
+                        <div id="current-wind-speed">WIND SPEED</div>
+                        <div>5 MPH</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Search for city and list of past cities -->
+            <div class="searchContainer">
+                <div id="searchTitle">Search For A City</div>
+                <input type="search" name="location" id="location" class="input" placeholder="Location In The USA"
+                    list="possible-locations">
+                <datalist id="previous-locations"></datalist>
+                <div>
+                    <button class="searchButton" id="searchButton">Search</button>
+                </div>
+                <h3>Previous Searches</h3>
+                <ul id="savedSearches"></ul>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- future forcast bar -->
+    <div class="future-forcast">
+        <!-- today's forcast -->
+        <div class="today" id="current-temp">
+            <div class="day">Monday</div>
+            <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather w-icon" class="w-icon">
+
+            <div class="temp">60&#176; F</div>
+            <div class="humidity">Humidity: 3%</div>
+            <div class="wind">Wind Speed: 10 MPH</div>
+        </div>
+        <!-- five day forcast -->
+        <div class="weather-forcast" id="weather-forcast">
+            <div class="weather-forcast-item">
+                <div class="day">Tuesday</div>
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather w-icon" class="w-icon">
+                <div class="temp">60&#176; F</div>
+                <div class="humidity">Humidity: 3%</div>
+                <div class="wind">Wind Speed: 10 MPH</div>
+            </div>
+            <div class="weather-forcast-item">
+                <div class="day">Wednesday</div>
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather w-icon" class="w-icon">
+                <div class="temp">60&#176; F</div>
+                <div class="humidity">Humidity: 3%</div>
+                <div class="wind">Wind Speed: 10 MPH</div>
+            </div>
+            <div class="weather-forcast-item">
+                <div class="day">Thursday</div>
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather w-icon" class="w-icon">
+                <div class="temp">60&#176; F</div>
+                <div class="humidity">Humidity: 3%</div>
+                <div class="wind">Wind Speed: 10 MPH</div>
+            </div>
+            <div class="weather-forcast-item">
+                <div class="day">Friday</div>
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather w-icon" class="w-icon">
+                <div class="temp">60&#176; F</div>
+                <div class="humidity">Humidity: 3%</div>
+                <div class="wind">Wind Speed: 10 MPH</div>
+            </div>
+            <div class="weather-forcast-item">
+                <div class="day">Saturday</div>
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather w-icon" class="w-icon">
+                <div class="temp">60&#176; F</div>
+                <div class="humidity">Humidity: 3%</div>
+                <div class="wind">Wind Speed: 10 MPH</div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/index.js"></script>
+
 </body>
+
 </html>
