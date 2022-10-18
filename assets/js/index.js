@@ -4,7 +4,7 @@ const time = document.getElementById('time');
 const date = document.getElementById('date');
 const currentWeather = document.getElementById('current-weather-items');
 const dayForcast = document.getElementById('weather-forcast');
-const currentTemp = document.getElementById('current-temp');
+// const currentTemp = document.getElementById('current-temp');
 const currentHumidity = document.getElementById('current-humidity');
 const currentWind = document.getElementById('current-wind-speed');
 
@@ -29,7 +29,7 @@ setInterval(currentTime, 1000);
 
 
 
-
+// connecting to geolocation api for openweather
 let citySearch = function (event) {
     let city = document.getElementById('location').value
     let cityAPI = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${APIKey}`
@@ -42,8 +42,22 @@ let citySearch = function (event) {
         }
     }) .then(function (response) {
         console.log(response)
-    })
-}
+    }) 
 
 
-    searchButton.addEventListener('click', citySearch);
+   
+};
+searchButton.addEventListener('click', citySearch);
+
+
+
+
+
+
+
+
+
+
+
+
+   
