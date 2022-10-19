@@ -1,3 +1,4 @@
+let previousSearch = document.querySelector('.previousSearch');
 const searchButton = document.querySelector('.searchButton');
 const time = document.getElementById('time');
 const date = document.getElementById('date');
@@ -5,7 +6,7 @@ const currentWeather = document.getElementById('current-weather-items');
 const dayForcast = document.getElementById('weather-forcast');
 
 
-const APIKey = 'f562979073c90c3bd0ad7139ae18e2dd';
+const APIKey = 'c51001d07a06e635ebd124822da632c2';
 // using momentjs for current time, and also date.
 
 function currentDate() {
@@ -23,12 +24,17 @@ setInterval(currentTime, 1000);
 
 
 
-
-
-
 // connecting to geolocation api for openweather
 let citySearch = function (event) {
-    let city = document.getElementById('location').value
+    let city = document.getElementById('location').value;
+    let towns = JSON.parse(localStorage.getItem('towns')) || [];
+    towns.push(city);
+    localStorage.setItem("towns", JSON.stringify(towns));
+// need to do a for loop
+    towns.forEach(createCityEl);
+
+
+
     let cityAPI = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${APIKey}`
     fetch(cityAPI).then(function (data){
         if (data.ok) { 
@@ -99,25 +105,24 @@ searchButton.addEventListener('click', citySearch);
 // saved searches from local storage
 
 // DOM EL
-let savedLocation = document.getElementById('location').value;
-let previousSearch = document.querySelector('.previousSearch');
-let cityInput = savedLocation('name');
+// let savedLocation = document.getElementById('location').value;
+// let previousSearch = document.querySelector('.previousSearch');
+// let cityInput = savedLocation('name');
 
 
 
 
+// let towns = JSON.parse(localStorage.getItem('towns')) || [];
 
-let towns = JSON.parse(localStorage.getItem('towns')) || [];
+// let addCity = (city) => {
+//     cities.push({
+//         city,
+//     });
 
-let addCity = (city) => {
-    cities.push({
-        city,
-    });
+//     localStorage.setItem("towns", JSON.stringify(towns))
 
-    localStorage.setItem("towns", JSON.stringify(towns))
-
-    return { city };
-};
+//     return { city };
+// };
 
 let createCityEl = ({city}) => {
     let cityDiv = document.createElement('div');
@@ -129,15 +134,15 @@ let createCityEl = ({city}) => {
     previousSearch.appendChild(cityDiv);
 };
 
-towns.forEach(createCityEl);
+// towns.forEach(createCityEl);
 
-savedLocation.onsubmit = (e) => {
-    e.preventDefault();
+// savedLocation.onsubmit = (e) => {
+//     e.preventDefault();
 
-    let newCity = addCity(
-        cityInput.value
-    );
-    createCityEl(newCity)
+//     let newCity = addCity(
+//         cityInput.value
+//     );
+//     createCityEl(newCity)
 
-    cityInput.value = '';
-};
+//     cityInput.value = '';
+// };
