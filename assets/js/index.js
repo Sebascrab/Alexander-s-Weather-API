@@ -1,4 +1,3 @@
-
 const searchButton = document.querySelector('.searchButton');
 const time = document.getElementById('time');
 const date = document.getElementById('date');
@@ -51,9 +50,9 @@ searchButton.addEventListener('click', citySearch);
 
 // connecting to current weather api for openweather
  let fetchDaily = function ({lat,lon}) {
-     let currentTemp = document.getElementById('current-temp').textContent
-     let currentWind = document.getElementById('current-wind-speed').textContent
-     let currentHum = document.getElementById('current-humidity').textContent
+     let currentTemp = document.getElementById('current-temp')
+     let currentWind = document.getElementById('current-wind-speed')
+     let currentHum = document.getElementById('current-humidity')
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`
     fetch(apiUrl).then(function (data) {
         if(data.ok) {
@@ -63,6 +62,12 @@ searchButton.addEventListener('click', citySearch);
         }
     }) .then(function (response) {
         console.log(response)
+
+        // taking data from response for current temprature, humidity, and wind speed
+        currentTemp.textContent = Math.floor(response.main.temp) + `\u00B0 F ` 
+        currentHum.textContent = Math.floor(response.main.humidity) + `%`
+        currentWind.textContent = Math.floor(response.wind.speed) + ` MPH`
+            
     })
 
 
@@ -85,7 +90,54 @@ searchButton.addEventListener('click', citySearch);
     
  };
 
+ // five day forcast
 
 
 
 
+
+// saved searches from local storage
+
+// DOM EL
+let savedLocation = document.getElementById('location').value;
+let previousSearch = document.querySelector('.previousSearch');
+let cityInput = savedLocation('name');
+
+
+
+
+
+let towns = JSON.parse(localStorage.getItem('towns')) || [];
+
+let addCity = (city) => {
+    cities.push({
+        city,
+    });
+
+    localStorage.setItem("towns", JSON.stringify(towns))
+
+    return { city };
+};
+
+let createCityEl = ({city}) => {
+    let cityDiv = document.createElement('div');
+    let cityName = document.createElement('h4');
+
+    cityName.innerText = 'City: ' + city;
+
+    cityDiv.append(cityName);
+    previousSearch.appendChild(cityDiv);
+};
+
+towns.forEach(createCityEl);
+
+savedLocation.onsubmit = (e) => {
+    e.preventDefault();
+
+    let newCity = addCity(
+        cityInput.value
+    );
+    createCityEl(newCity)
+
+    cityInput.value = '';
+};

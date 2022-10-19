@@ -22,37 +22,38 @@
             <div class="date-container">
                 <div class="time" id="time">
                 </div>
-                    <div class="date" id="date">
-                    </div>
-                    <div class="currentCity" id="currentCity">
+                <div class="date" id="date">
+                </div>
+                <div class="currentCity" id="currentCity">
                 </div>
                 <div class="others" id="current-weather-items">
                     <div class="weather-item">
-                        <div>TEMP</div>
-                        <div id="current-temp">55&#176; F</div>
+                        <div>TEMP:</div>
+                        <div id="current-temp"></div>
                     </div>
                     <div class="weather-item">
-                        <div>HUMIDITY</div>
-                        <div id="current-humidity">15%</div>
+                        <div>HUMIDITY:</div>
+                        <div id="current-humidity"></div>
                     </div>
                     <div class="weather-item">
-                        <div>WIND SPEED</div>
-                        <div id="current-wind-speed">5 MPH</div>
+                        <div>WIND SPEED:</div>
+                        <div id="current-wind-speed"></div>
                     </div>
                 </div>
             </div>
             <!-- Search for city and list of past cities -->
-            <div class="searchContainer">
-                <div id="searchTitle">Search For A City</div>
-                <input type="search" name="location" id="location" class="input" placeholder="Location In The USA"
-                    list="possible-locations">
-                <datalist id="previous-locations"></datalist>
-                <div>
-                    <button class="searchButton" id="searchButton">Search</button>
+            <form id="searchBox">
+                <div class="searchContainer">
+
+                    <div id="searchTitle">Search For Any City In The World</div>
+                    <input type="text" placeholder="Ex: Berlin" id="location" class="input">
+                    <div>
+                        <button type="button" class="searchButton" id="searchButton">Search</button>
+                    </div>
+                    <h3>Previous Searches</h3>
+                    <div class="previousSearch"></div>
                 </div>
-                <h3>Previous Searches</h3>
-                <ul id="savedSearches"></ul>
-            </div>
+            </form>
         </div>
     </div>
     </div>
@@ -64,53 +65,15 @@
             <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather w-icon" class="w-icon">
 
             <div class="temp" id="highTemp">60&#176; F</div>
-                <div class="temp" id="LowTemp">60&#176; F</div>
+            <div class="temp" id="LowTemp">60&#176; F</div>
             <div class="humidity" id="forcastHum">Humidity: 3%</div>
             <div class="wind" id="forecastWind">Wind Speed: 10 MPH</div>
         </div>
         <!-- five day forcast -->
-        <div class="weather-forcast" id="weather-forcast">
-            <div class="weather-forcast-item">
-                <div class="day">Tuesday</div>
-                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather w-icon" class="w-icon">
-                <div class="temp" id="highTemp">60&#176; F</div>
-                <div class="temp" id="LowTemp">60&#176; F</div>
-                <div class="humidity" id="forcastHum">Humidity: 3%</div>
-                <div class="wind" id="forecastWind">Wind Speed: 10 MPH</div>
-            </div>
-            <div class="weather-forcast-item">
-                <div class="day">Wednesday</div>
-                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather w-icon" class="w-icon">
-                <div class="temp" id="highTemp">60&#176; F</div>
-                <div class="temp" id="LowTemp">60&#176; F</div>
-                <div class="humidity" id="forcastHum">Humidity: 3%</div>
-                <div class="wind" id="forecastWind">Wind Speed: 10 MPH</div>
-            </div>
-            <div class="weather-forcast-item">
-                <div class="day">Thursday</div>
-                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather w-icon" class="w-icon">
-                <div class="temp" id="highTemp">60&#176; F</div>
-                <div class="temp" id="LowTemp">60&#176; F</div>
-                <div class="humidity" id="forcastHum">Humidity: 3%</div>
-                <div class="wind" id="forecastWind">Wind Speed: 10 MPH</div>
-            </div>
-            <div class="weather-forcast-item">
-                <div class="day">Friday</div>
-                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather w-icon" class="w-icon">
-                <div class="temp" id="highTemp">60&#176; F</div>
-                <div class="temp" id="LowTemp">60&#176; F</div>
-                <div class="humidity" id="forcastHum">Humidity: 3%</div>
-                <div class="wind" id="forecastWind">Wind Speed: 10 MPH</div>
-            </div>
-            <div class="weather-forcast-item">
-                <div class="day">Saturday</div>
-                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather w-icon" class="w-icon">
-                <div class="temp" id="highTemp">60&#176; F</div>
-                <div class="temp" id="LowTemp">60&#176; F</div>
-                <div class="humidity" id="forcastHum">Humidity: 3%</div>
-                <div class="wind" id="forecastWind">Wind Speed: 10 MPH</div>
-            </div>
-        </div>
+
+
+
+    </div>
     </div>
 
 
