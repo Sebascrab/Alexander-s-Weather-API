@@ -26,8 +26,10 @@ setInterval(currentTime, 1000);
 
 // connecting to geolocation api for openweather
 let citySearch = function (event) {
+
+    // save search to local storage
     let city = document.getElementById('location').value;
-    let towns = JSON.parse(localStorage.getItem('towns')) || [];
+    let towns = JSON.parse(localStorage.getItem('towns',)) || [];
     towns.push(city);
     localStorage.setItem("towns", JSON.stringify(towns));
 // need to do a for loop
@@ -101,29 +103,7 @@ searchButton.addEventListener('click', citySearch);
 
 
 
-
-// saved searches from local storage
-
-// DOM EL
-// let savedLocation = document.getElementById('location').value;
-// let previousSearch = document.querySelector('.previousSearch');
-// let cityInput = savedLocation('name');
-
-
-
-
-// let towns = JSON.parse(localStorage.getItem('towns')) || [];
-
-// let addCity = (city) => {
-//     cities.push({
-//         city,
-//     });
-
-//     localStorage.setItem("towns", JSON.stringify(towns))
-
-//     return { city };
-// };
-
+// appends list of cities from past searches
 let createCityEl = ({city}) => {
     let cityDiv = document.createElement('div');
     let cityName = document.createElement('h4');
@@ -134,15 +114,3 @@ let createCityEl = ({city}) => {
     previousSearch.appendChild(cityDiv);
 };
 
-// towns.forEach(createCityEl);
-
-// savedLocation.onsubmit = (e) => {
-//     e.preventDefault();
-
-//     let newCity = addCity(
-//         cityInput.value
-//     );
-//     createCityEl(newCity)
-
-//     cityInput.value = '';
-// };
