@@ -54,6 +54,8 @@ const citySearch = function (event) {
         fetchDaily(response[0])
         fetchFiveDay(response[0])
     })   
+
+
 };
 
 searchButton.addEventListener('click', citySearch);
@@ -102,10 +104,11 @@ let pageLoad = () => {
     }) .then(function (response) {
         console.log(response)
         // for loop for five day forecast
-        
+
         for(let i = 2; i < response.list.length; i+=8) {
             fiveDayForecast(response.list[i])
         }
+    
         
     })
 
@@ -146,43 +149,34 @@ let pageLoad = () => {
         tile.append(cardB);
         cardB.append(cardTitleDay, windElement, humidityElement, tempElement);
 
-    futureForecast.append(column);
-
-    
-
+        futureForecast.append(column);
     };
 
-//    Five Day Forecast function:
+    // appends list of cities from past searches
+    let createCityEl = (city) => {
+        let cityDiv = document.createElement('div');
+        let cityNameBtn = document.createElement('button');
 
-   
+        cityNameBtn.innerText = city;
 
-    
-
- // appends list of cities from past searches
-let createCityEl = (city) => {
-    let cityDiv = document.createElement('div');
-    let cityNameBtn = document.createElement('button');
-
-    cityNameBtn.innerText = city;
-
-    cityDiv.append(cityNameBtn);
-    previousSearch.appendChild(cityDiv);
-    cityNameBtn.addEventListener('click', historySearch)
+        cityDiv.append(cityNameBtn);
+        previousSearch.appendChild(cityDiv);
+        cityNameBtn.addEventListener('click', historySearch)
 
 
 };
 
-let historySearch = (event) => {
-    event.preventDefault();
-    let cityName = event.target.textContent;
-    let searchInput = document.getElementById('location');
-    searchInput.value = cityName;
+    let historySearch = (event) => {
+        event.preventDefault();
+        let cityName = event.target.textContent;
+        let searchInput = document.getElementById('location');
+        searchInput.value = cityName;
 
 
 
-    citySearch();
-   
+        citySearch();
     
-}
+        
+    }
 
-pageLoad();
+        pageLoad();
