@@ -42,7 +42,6 @@ const citySearch = function (event) {
     localStorage.setItem("towns", JSON.stringify(towns));
     createCityEl(city);
     
-
     let cityAPI = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${APIKey}`
     fetch(cityAPI).then(function (data){
         if (data.ok) { 
@@ -54,22 +53,17 @@ const citySearch = function (event) {
         console.log(response)
         fetchDaily(response[0])
         fetchFiveDay(response[0])
-    }) 
-
-    
-
-   
+    })   
 };
+
 searchButton.addEventListener('click', citySearch);
 
+// making sure that on page reload, previous searches are still there
 let pageLoad = () => {
     let towns = JSON.parse(localStorage.getItem('towns',)) || [];
     localStorage.setItem("towns", JSON.stringify(towns));
     towns.forEach(city => createCityEl(city));
-
-
-}
-
+};
 
 // connecting to current weather api for openweather
  let fetchDaily = function ({lat,lon}) {
@@ -92,17 +86,9 @@ let pageLoad = () => {
         currentTemp.textContent = Math.floor(response.main.temp) + `\u00B0 F ` 
         currentHum.textContent = Math.floor(response.main.humidity) + `%`
         currentWind.textContent = Math.floor(response.wind.speed) + ` MPH`
-        currentCity.textContent = response.name
-        
-
-        
-            
-    })
-
-
-    
+        currentCity.textContent = response.name       
+    })  
  };
-
 
 //  connecting to five day forecast api for openweather
  let fetchFiveDay = function ({lat,lon}) {
@@ -115,71 +101,64 @@ let pageLoad = () => {
         }
     }) .then(function (response) {
         console.log(response)
+        // for loop for five day forecast
+        
+        for(let i = 2; i < response.list.length; i+=8) {
+            fiveDayForecast(response.list[i])
+        }
+        
     })
 
-    // Five Day Forecast card made here instead of in index.html
-    // function fiveDayForecast(forecast) {
-    //     let futureTemp = response.main.temp;
-    //     let futureHumidity = response.main.humidity;
-    //     let futureWind = response.wind.speed;
-    //     let column = document.createElement('div');
-    //     let tile = document.createElement('div');
-    //     let cardB = document.createElement('div');
-    //     let cardTitleDay = document.createElement('h4');
-    //     let windElement = document.createElement('p');
-    //     let tempElement = document.createElement('p');
-    //     let humidityElement = document.createElement('p');
-
-    //     column.append(tile);
-    //     tile.append(cardb);
-    //     cardb.append(cardTitleDay, windElement, humidityElement, tempElement);
-
-    //     column.setAttribute('class', 'column-md');
-    //     column.classList.add('five-day-tile');
-    //     tile.setAttribute('class', 'tile bg-primary h-100 text-black');
-    //     cardB.setAttribute('class', 'tile-body p-2');
-    //     cardTitleDay.setAttribute('class', 'tile-title');
-    //     humidityElement.setAttribute('class', 'title-text');
-    //     windElement.setAttribute('class', 'title-text');
-    //     tempElement.setAttribute('class', 'title-text');
-
-    //     cardTitleDay.textContent = dayjs(forecast.dt_txt).format('M/D');
-    //     humidityElement.textContent = `Humidity: ${futureHumidity}` + `%`;
-    //     tempElement.textContent = `Temperature: ${futureTemp}` + `\u00B0 F`;
-    //     windElement.textContent =  `Wind Speed: ${futureWind}` + ` MPH`;
-
-    // futureForecast.append(column);
+    
 
     };
 
+    // Five Day Forecast card made here instead of in index.html
+    function fiveDayForecast(response) {
+        let futureTemp = Math.floor(response.main.temp);
+        let futureHumidity = Math.floor(response.main.humidity);
+        let futureWind = Math.floor(response.wind.speed);
+        let column = document.createElement('div');
+        let tile = document.createElement('div');
+        let cardB = document.createElement('div');
+        let cardTitleDay = document.createElement('h4');
+        let windElement = document.createElement('p');
+        let tempElement = document.createElement('p');
+        let humidityElement = document.createElement('p');
 
+    
+
+        column.setAttribute('class', 'column-md');
+        column.classList.add('five-day-tile');
+        tile.setAttribute('class', 'tile  text-black');
+        cardB.setAttribute('class', 'tile-body p-2');
+        cardTitleDay.setAttribute('class', 'tile-title');
+        humidityElement.setAttribute('class', 'title-text');
+        windElement.setAttribute('class', 'title-text');
+        tempElement.setAttribute('class', 'title-text');
+
+        cardTitleDay.textContent = dayjs(response.dt_txt).format('M/D');
+        humidityElement.textContent = `Humidity: ${futureHumidity}` + `%`;
+        tempElement.textContent = `Temperature: ${futureTemp}` + `\u00B0 F`;
+        windElement.textContent =  `Wind Speed: ${futureWind}` + ` MPH`;
+
+        column.append(tile);
+        tile.append(cardB);
+        cardB.append(cardTitleDay, windElement, humidityElement, tempElement);
+
+    futureForecast.append(column);
+
+    
+
+    };
 
 //    Five Day Forecast function:
 
-    function displayFutureWeather(futureWeather) {
-        let begin = dayjs().add(1, 'day').startOf('day').unix();
-        let end = dayjs().add(7, 'day').startOf('day').unix();
-        let headColumn = document.createElement('div');
-        let title = document.createElement('h5');
+   
 
-        headColumn.setAttribute('class', 'col-12');
-        title.textContent = 'Future Forecast:';
-        headColumn.append(title);
+    
 
-        futureForecast.innerHTML = '';
-        futureForecast.append(headColumn);
-
-        
-
-
- };
-
- 
-
-
-
-
-// appends list of cities from past searches
+ // appends list of cities from past searches
 let createCityEl = (city) => {
     let cityDiv = document.createElement('div');
     let cityNameBtn = document.createElement('button');
@@ -189,6 +168,8 @@ let createCityEl = (city) => {
     cityDiv.append(cityNameBtn);
     previousSearch.appendChild(cityDiv);
     cityNameBtn.addEventListener('click', historySearch)
+
+
 };
 
 let historySearch = (event) => {
@@ -197,7 +178,8 @@ let historySearch = (event) => {
     let searchInput = document.getElementById('location');
     searchInput.value = cityName;
 
-    
+
+
     citySearch();
    
     

@@ -3,8 +3,8 @@
 
 *{
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    margin: 5;
+    padding: 5;
 }
 
 body {
@@ -65,10 +65,35 @@ body {
 
 }
 
+#location.input {
+    margin: 10px;
+    width: 40%;
+    height: 35px;
+    border: 10px 10px;
+    border-radius: 0.5rem;
+}
+
+#searchButton.searchButton {
+    height: 30px;
+    width: 20%;
+}
+
+button {
+    border: solid;
+    font-size: 15px;
+    margin: 5px 10px;
+    height: 30px;
+    width: 30%;
+    background-color: rgba(218, 227, 213, 0.3);
+    
+}
 .searchContainer .searchButton {
     cursor: pointer;
 }
 
+#currentTitle{
+    font-size: 20px;
+}
 .current-info .others {
     display: flex;
     flex-direction: column;
@@ -86,6 +111,10 @@ body {
 
 }
 
+#date.date{
+    padding-bottom: 40px;
+}
+
 
 .future-forcast {
     background: rgba(24, 24, 27, 0.3);
@@ -99,59 +128,42 @@ body {
 
 }
 
-.future-forcast .today {
+
+.column-md {
     display: flex;
+    flex-direction: column;
+    flex: wrap;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    
+    margin: 10px;
+    
+}
+
+#future-forcast.fiveDay {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+.fiveDay {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+}
+
+.tile {
     border: solid;
-    border-color: white;
-    border-radius: 15px;
-    padding: 20px;
-    margin: 30px 20px;
-    font-size: 18px;
-}
-
-.future-forcast .today .day {
+    border-radius: 1rem;
+    margin: 10px 0;
     padding: 5px 15px;
-    background: #babac2;
-    text-align: center;
-    border-radius: 50px;
-    
-
 }
 
-.weather-forcast .weather-forcast-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0px 10px;
-    
-    
+#currentCity.currentCity {
+    font-size: 30px;
+    font-weight: 700;
 }
 
 
-
-.future-forcast .weather-forcast {
-    display: flex;
-
-}
-
-.weather-forcast .weather-forcast-item .day {
-    padding: 5px 15px;
-    background: #babac2;
-    text-align: center;
-    border-radius: 50px;
-    b
-}
-
-@media only screen and (max-width:720px) {
-    .future-forcast {
-        justify-content: start;
-        align-items: none;
-        overflow-y: scroll;
-    }
-
-    
-}
