@@ -41,5 +41,7 @@
 
   Email: alexanders.tischner@outlook.com 
 
+  ![image of project](assets/images/Weather%20API%20Screenshot.png)
+
   
 
