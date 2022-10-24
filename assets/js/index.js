@@ -42,7 +42,7 @@ const citySearch = function (event) {
     localStorage.setItem("towns", JSON.stringify(towns));
     createCityEl(city);
     
-    let cityAPI = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${APIKey}`
+    let cityAPI = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${APIKey}`
     fetch(cityAPI).then(function (data){
         if (data.ok) { 
             return data.json()

@@ -140,7 +140,7 @@ button {
     
 }
 
-#future-forcast.fiveDay {
+#futureForcast.fiveDay {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
