@@ -20,21 +20,27 @@
   ## Name: 
 
   Alexander Tischner
+  
   ## Installation 
 
   No install, just open page. 
+  
   ## Contributors 
 
   none
+  
   ## Usage 
 
-  Enter the city that you would like to see weather conditions and hit search. Once that is done, it will save below in previous searches and you can re-visit those cities.  
+  Enter the city that you would like to see weather conditions and hit search. Once that is done, it will save below in previous searches and you can re-     visit those cities.  
+  
   ## Tests 
 
   none
+  
   ## License 
  
   This project is protected by the MIT license.
+  
   ## Questions 
 
   Github: [Sebascrab](https://github.com/Sebascrab) 
@@ -42,6 +48,8 @@
   Email: alexanders.tischner@outlook.com 
 
   ![image of project](assets/images/Weather%20API%20Screenshot.png)
+  
+  Deployed: https://sebascrab.github.io/Weather-Forecast-With-OpenWeather-API/
 
   
 
